@@ -18,19 +18,34 @@
  */
 var questions = [
     {
-        "What is the service that can store unbounded amount of data?": [
-            "amazon S3"
+        "What is the key value storage service that can store unbounded amount of data?": [
+            "amazon S3",
+            "amazon Dynamo DB",
+            "amazon EBS",
+            "amazon Cloudfront"
         ]
     },
     {
         "What is the service that provides queue?": [
-            "amazon SQS"
-            
+            "amazon SQS",
+            "amazon SES",
+            "amazon RDS",
+            "amazon SNS"
         ]
     },
     {
         "What is the service that can execute serverless code?": [
-            "lambda"
+            "lambda",
+            "amazon codepipeline",
+            "amazon Elastic Compute Cloud",
+            "amazon aurora"
+            
+        ]
+    },
+    {
+        "True or False? On Amazon RDS read replica is supported for Oracle?": [
+            "false",
+            "true"
             
         ]
     },
@@ -157,7 +172,7 @@ function onSessionEnded(sessionEndedRequest, session) {
 
 var ANSWER_COUNT = 1;
 var GAME_LENGTH = 2;
-var CARD_TITLE = "AWS Quizzer Flash Cards"; // Be sure to change this for your skill.
+var CARD_TITLE = "Cloud Quizzer Flash Cards"; // Be sure to change this for your skill.
 
 function getWelcomeResponse(callback) {
     var sessionAttributes = {},
