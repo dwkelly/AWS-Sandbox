@@ -25,3 +25,7 @@ support.squarespace.com
 <img src="https://github.com/dwkelly/AWS-Sandbox/raw/master/aws-squarespace-prototype/diagrams/data_flow_diagram.png" />
 
  In this repo is a prototype of the solution where I was able to get data pushed out of my test Squarespace site to AWS using Squarespace code injection.
+
+ 
+## Security Concerns
+In order for embedded Javascript to send messages to the SQS queue appropiate AWS Identity and Access Management (IAM)  permissions  are  required. I would recommend only allowing this user to send messages to the queue. This user should not be able to perform any other actions. The Access Key Id and the Private Key will be embedded in the javascript.
