@@ -1,8 +1,10 @@
 # AWS Squarespace Prototype
 This is a prototype of Squarespace integration with AWS. 
 
+
 ## Purpose
 The goal is to programatically get order information out of Squarespace and push it into another system.
+
 
 ## Methods to get data out of Squarespace
 Squarespace has 2 ways to get data programmatically out of the system using Commerce API and Code Injection.
@@ -19,6 +21,7 @@ You can add custom code and scripts to your site using the Code Injection area i
 support.squarespace.com
 
 
-
 ## How it works
 <img src="https://github.com/dwkelly/AWS-Sandbox/raw/master/aws-squarespace-prototype/diagrams/data_flow_diagram.png" />
+
+ In this repo is a prototype of the solution where I was able to get data pushed out of my test Squarespace site to AWS using Squarespace code injection.
