@@ -41,14 +41,14 @@ var questions = [
             "amazon aurora"
             
         ]
-    },
+    }/*,
     {
         "True or False? On Amazon RDS read replica is supported for Oracle?": [
             "false",
             "true"
             
         ]
-    },
+    },*/
 ];
 
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -170,13 +170,15 @@ function onSessionEnded(sessionEndedRequest, session) {
 
 // ------- Skill specific business logic -------
 
-var ANSWER_COUNT = 1;
+var ANSWER_COUNT = 4;
 var GAME_LENGTH = 2;
 var CARD_TITLE = "Cloud Quizzer Flash Cards"; // Be sure to change this for your skill.
+var MULTPLE_CHOICE_PROMPT = " Your options are "
+
 
 function getWelcomeResponse(callback) {
     var sessionAttributes = {},
-        speechOutput = "Let's learn about A W S Services. I will ask you about " + GAME_LENGTH.toString()
+        speechOutput = "Let's learn about A W S Services. I will ask you " + GAME_LENGTH.toString()
             + " questions, try to get as many right as you can. Just say the name of the  A W S Service. Let's begin. ",
         shouldEndSession = false,
 
@@ -186,13 +188,13 @@ function getWelcomeResponse(callback) {
 
         currentQuestionIndex = 0,
         spokenQuestion = Object.keys(questions[gameQuestions[currentQuestionIndex]]),
-        repromptText = spokenQuestion,
+        repromptText = spokenQuestion + MULTPLE_CHOICE_PROMPT,
 
         i, j;
-
-    for (i = 0; i < ANSWER_COUNT; i++) {
-        repromptText += ""
+		for (i = 0; i < ANSWER_COUNT; i++) {
+        repromptText +=". " + roundAnswers[i];
     }
+	
     speechOutput += repromptText;
     sessionAttributes = {
         "speechOutput": repromptText,
@@ -357,9 +359,10 @@ function handleAnswerRequest(intent, session, callback) {
             var roundAnswers = populateRoundAnswers(gameQuestions, currentQuestionIndex, correctAnswerIndex),
 
                 questionIndexForSpeech = currentQuestionIndex + 1,
-                repromptText =  spokenQuestion ;
+                repromptText =  spokenQuestion  + MULTPLE_CHOICE_PROMPT;
+
             for (var i = 0; i < ANSWER_COUNT; i++) {
-                repromptText +=  ""
+		        repromptText +=". " + roundAnswers[i];
             }
             speechOutput += userGaveUp ? "" : "That answer is ";
             speechOutput += speechOutputAnalysis + "Your score is " + currentScore.toString() + ". " + repromptText;
