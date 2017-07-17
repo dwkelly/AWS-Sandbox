@@ -1,0 +1,3 @@
+{ "accessKeyId": "<REPLACE WITH ACCESS KEY ID>", 
+"secretAccessKey": "<REPLACE WITH SECRET ACCESS KEY>", 
+"region": "<REPLACE WITH REGION (us-east-1)>" }
