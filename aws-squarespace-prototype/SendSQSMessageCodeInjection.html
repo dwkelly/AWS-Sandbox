@@ -1,0 +1,68 @@
+<!--  Embedded Code Injections for ORDER CONFIRMATION PAGE
+Settings
+	-> Advanced
+		-> Code Injection
+			-> Enter the below into "ORDER CONFIRMATION PAGE"
+-->
+
+<html>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.77.0.min.js"></script>
+<script>
+
+
+var queueUrl = "https://sqs.us-east-1.amazonaws.com/399091925902/test_queue";
+var appId = "";
+
+
+function sendMessage(){
+	AWS.config.region = "us-east-1";
+	AWS.config.accessKeyId = "AKIAIHFQHDJXJQLIS6RA";
+	AWS.config.secretAccessKey="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";
+	var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
+	var params = {
+			DelaySeconds:10,
+			MessageAttributes: {
+				"orderId":{
+					DataType: "String",
+					StringValue: "{orderId}"
+					},
+				"orderSubtotal":{
+					DataType: "String",
+					StringValue: "{orderSubtotal}"
+					},
+				"orderSubtotalCents":{
+					DataType: "String",
+					StringValue: "{orderSubtotalCents}"
+					},
+				"orderGrandTotal":{
+					DataType: "String",
+					StringValue: "{orderGrandTotal}"
+					},
+				"orderGrandTotalCents":{
+					DataType: "String",
+					StringValue: "{orderGrandTotalCents}"
+					},
+				"customerEmailAddress":{
+					DataType: "String",
+					StringValue: "{customerEmailAddress}"
+					}
+				},
+				MessageBody: "order {orderId} sent at "+ new Date(),
+				QueueUrl: queueUrl
+	};
+	
+	sqs.sendMessage(params, function(err, data) {
+		  if (err) {
+		    console.log("Error", err);
+		  } else {
+		    console.log("Order sent to LMS. You should recieve an email shortly. Message ID: "+ data.MessageId);
+		  }
+	});	
+	
+	
+}
+
+sendMessage();
+
+</script>
+</html>
