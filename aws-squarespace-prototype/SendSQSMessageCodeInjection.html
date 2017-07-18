@@ -16,6 +16,7 @@ var appId = "";
 
 function sendMessage(){
 	AWS.config.region = "us-east-1";
+	<!-- The below access key ID/SecretKey pair is not valid. Substitute it for your own.--> 
 	AWS.config.accessKeyId = "AKIAIHFQHDJXJQLIS6RA";
 	AWS.config.secretAccessKey="oXHyOdi7DH/No4JkbN2FlUPnE4Pgkc/dSZTTja0v";
 	var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
