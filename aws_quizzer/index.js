@@ -22,7 +22,7 @@ var questions = [
             "amazon S3",
             "amazon Dynamo DB",
             "amazon EBS",
-            "amazon Cloudfront"
+            "amazon Redshift"
         ]
     },
     {
@@ -41,7 +41,34 @@ var questions = [
             "amazon aurora"
             
         ]
-    }/*,
+    },
+    {
+        "What programming language is not supported on AWS Lambda?": [
+            "C plus plus",
+            "Java",
+            "Python",
+            "C#"
+            
+        ]
+    },
+    {
+        "What is the max amount of time that an SQS message can be in a queue?": [
+            "14 days",
+            "12 hours",
+            "24 hours",
+            "60 minutes"
+            
+        ]
+    },
+    {
+        "What service provides petabyte scale data wharehousing solution?": [
+            "amazon Redshift",
+            "amazon S3",
+            "amazon Dynamo DB",
+            "amazon EBS"
+        ]
+    }//Currently the skill doesn't support true or false
+	/*,
     {
         "True or False? On Amazon RDS read replica is supported for Oracle?": [
             "false",
@@ -171,7 +198,7 @@ function onSessionEnded(sessionEndedRequest, session) {
 // ------- Skill specific business logic -------
 
 var ANSWER_COUNT = 4;
-var GAME_LENGTH = 2;
+var GAME_LENGTH = 3;
 var CARD_TITLE = "Cloud Quizzer Flash Cards"; // Be sure to change this for your skill.
 var MULTPLE_CHOICE_PROMPT = " Your options are "
 
@@ -179,7 +206,7 @@ var MULTPLE_CHOICE_PROMPT = " Your options are "
 function getWelcomeResponse(callback) {
     var sessionAttributes = {},
         speechOutput = "Let's learn about A W S Services. I will ask you " + GAME_LENGTH.toString()
-            + " questions, try to get as many right as you can. Just say the name of the  A W S Service. Let's begin. ",
+            + " questions, try to get as many right as you can. May the odds forever be in your favor. ",
         shouldEndSession = false,
 
         gameQuestions = populateGameQuestions(),
